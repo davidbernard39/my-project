@@ -1,3 +1,6 @@
 # my-project
-Test Project
-`Hello world !`
+
+Projet fourre-tout :
+
+- memo : pense bête des commandes utiles pour bash, git...
+- tuto : notes et liens vers des tutos intéressants
