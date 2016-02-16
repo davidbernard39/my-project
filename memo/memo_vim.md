@@ -12,5 +12,5 @@ set autoindent " Reproduit l'indentation de la ligne courante sur la suivante
 
 " Encoding par défaut
 set encoding=utf-8 " Encoding pour l'affichage
-set fileencoding=utf-8 " Encoding a l'écriture du fichier
+set fileencodings=utf-8 " Encoding a l'écriture du fichier
 ```
