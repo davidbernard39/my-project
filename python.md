@@ -7,6 +7,7 @@
 ### Qu'est ce que python ?
 
 - Langage interprété
+- Langage à typage dynamique
 - Permet de créer des scripts et toute sorte de programmes (jeux, logiciels, progiciels...)
 - Peut être étendu avec des bibliothèques
 - Portable sous différents OS
@@ -209,4 +210,132 @@ try:
 except ValueError:
     print("La valeur saisie est invalide (l'année est peut-être négative).")
 ```
+
+## Partie 2 - POO côté utilisateur
+
+### Les chaines de caractères
+
+- En python tout est objet. Un objet est composé de variables et de fonctions.
+- Les variables sont en réalité des objets
+- Les types de données sont des classes
+
+chaine.lower() : passe en minuscule chaine
+
+objet.methode()
+
+chaine = str() <=> chaine = ""
+
+Formatage de chaines :
+
+    nom = "toto"
+    print("Hello {0}".format(nom))
+
+Formatage avec noms de variables :
+
+    adresse = """
+    {no_rue}, {nom_rue}
+     {code_postal} {nom_ville} ({pays})
+    """.format(no_rue=5, nom_rue="rue des Postes", code_postal=75003, nom_ville="Paris", pays="France")
+    print(adresse)
+
+Concaténation avec + :
+
+    chaine1 + chaine2
+    
+Accéder aux caractères d'une chaine :
+
+    chaine[i]
+    
+On peut accéder aux caractères en partant de la fin (chaine[-1])
+
+Longueur d'une chaine : len(chaine)
+
+Sélection de chaine : chaine[0:2]
+
+### Listes et tuples (1/2)
+
+#### Listes
+
+Les listes sont des séquences comme les chaines de caractères qui peuvent contenir n'importe quel type d'objet au lieu de contenir des caractères.
+
+Créer une liste vide :
+
+ma_liste = list()
+ma_liste = []
+
+Créer une liste non vide : ma_liste = [1,2,3,4,5]
+
+Accéder à un élément de la liste : ma_liste[i]
+
+Ajouter un élément à la liste : ma_liste.append(var)
+
+Concaténation de liste : ma_liste1 + ma_liste2
+
+Suppression d'élément de liste : 
+
+del var / del ma_liste[i]
+ma_liste.remove(var)
+
+Parcours de liste : 
+
+i = 0
+while i < len(ma_liste):
+	# instruction
+	
+for element in ma_liste:
+	# instruction
+
+for i, element in enumerate(ma_liste):
+	# instruction
+	
+for elt in enumerate(ma_liste): 
+	# elt est un tuple (indice, val)
+	
+#### tuples
+
+Les tuples sont des listes immutables
+
+Créer un tuple vide : t = ()
+
+Créer un tuple non vide : t = (1,) / t = 1, / t = (1,2,5)
+
+Les tuples peuvent être utilisés dans des fonctions pour retourner plusieurs valeurs.
+
+### Listes et tuples (2/2)
+
+#### Listes et chaines
+
+Des chaines aux listes : chaine.split(" ")
+
+Des listes aux chaines : " ".join(tab)
+
+Fonction avec une liste de paramètres variable : def fonc(*params)
+
+Transformer une liste en paramètres de fonctions : 
+tab = [1,3]
+print(*tab)
+
+#### Compréhensions de liste
+
+- Permettent de modifier / filter une liste
+
+>>> liste=[0,1,2,3,4]
+>>> [nb * nb for nb in liste]
+[0, 1, 4, 9, 16]
+
+
+>>> [nb * nb for nb in liste if nb%2 == 0]
+[0, 4, 16]
+
+
+>>> toto=[
+...     ("fraises", 7),
+...     ("carotte",25)
+... ]
+
+>>> tata=[(qtt,nom) for nom,qtt in toto]
+>>> sorted(tata)
+[(7, 'fraises'), (25, 'carotte')]
+
+La syntaxe pour effectuer un filtrage est la suivante : nouvelle_squence = [element for element in ancienne_squence if condition].
 
