@@ -339,3 +339,65 @@ print(*tab)
 
 La syntaxe pour effectuer un filtrage est la suivante : nouvelle_squence = [element for element in ancienne_squence if condition].
 
+### Dictionnaires
+
+#### Dict
+
+Créer un dictionnaire vide : 
+d = dict()
+d = {}
+
+Créer un dictionnaire rempli :
+d = {cle1:val1,cleN:valN}xxx
+
+Ajouter des éléments :
+d[cle] = val
+
+Accéder à un élément :
+d[cle]
+
+ex avec cle tuple :
+d[a,1] = val
+
+Supprimer un élément :
+del d[cle]
+d.pop(cle)
+
+On peut mettre des fonctions dans un dictionnaire :
+d[cleFonc] = f
+d[cleFonc]() equivalent à f()
+
+Parcours des clés :
+
+for c in d.keys()
+
+Parcours des valeurs :
+
+for v in d.values()
+
+Parcours des clés et valeurs :
+
+for c,v in d.items()
+
+Test d'une valeur :
+
+if val in d.values()
+
+Fonction avec une liste de paramètres nommés variable : def fonc(**params)
+
+Transformer une liste en paramètres de fonctions : 
+map = {cle:val,cleN:valN}
+fonc(**tab)
+
+#### Set
+
+Créer un set :
+s = set()
+s = {val1,valN}
+
+Ajouter un élément :
+s.add(val)
+
+
+
+
