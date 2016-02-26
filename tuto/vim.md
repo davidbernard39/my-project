@@ -8,4 +8,5 @@
 ## Commandes
 
 `q:` -> retourne l'historique des commandes et permet de sélectionner celle à rejouer
+
 `:sp` -> split le buffer 
