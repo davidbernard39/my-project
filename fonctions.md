@@ -9,6 +9,7 @@ str(var) : transforme var en string
 len(str) : renvoie la longueur de str
 quit() : termine le programme
 sorted(list) : trie une liste
+open(file,mode) : ouvre un fichier
 
 # str
 

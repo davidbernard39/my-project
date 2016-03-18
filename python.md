@@ -398,6 +398,271 @@ s = {val1,valN}
 Ajouter un élément :
 s.add(val)
 
+### Fichiers
 
+import os
 
+os.chdir("/dir")
+os.getcwd() : retourne le répertoire actuel
 
+Ouvrir un fichier : fic = open(path_file, mode)
+mode : r (read) ; w (write) ; a (append) ; b (binary)
+
+Fermer un fichier : fic.close()
+
+Ecrire du texte : fic.write(text)
+
+Ouvrir un fichier sans avoir à gérer la fermeture en cas d'erreur :
+with open(path_file,mode) as fic:
+	# instructions
+	
+with permet de créer un context manager
+
+Enregistrer un objet dans un fichier avec pickle :
+
+import pickle
+>>> with open('donnees', 'wb') as fichier:
+...     mon_pickler = pickle.Pickler(fichier)
+...     # enregistrement ...
+
+pickler.dump(obj)
+
+Lire un objet :
+
+mon_unpickler = pickle.Unpickler(fichier)
+
+obj = mon_unpickler.load()
+
+### Portée des variables et références
+
+- Portée dans l'espace local d'une fonction puis dans espace local appelant
+- l'espace local d'une fonction n'existe que le temps d'exécution de la fonction
+
+En python tout est objet. Lors de l'appel à une fonction, c'est l'objet qui est passé et non les valeurs. L'objet peut donc être modifié
+
+Une variable est un nom identifiant pointant vers une référence d'un objet
+
+ex: liste1 = [1,2,3]
+liste2 = liste1
+
+liste1 et liste2 pointent vers le même objet. Une modification sur l'un des objets entraine la modification de l'autre.
+
+Pour faire une copie de l'objet il faut passer par le constructeur : liste2 = list(liste1)
+
+Pour comparer le contenu : == (ex : liste1 == liste2 si les deux listes contiennent les mêmes valeurs)
+Pour comparer deux références : is (ex : liste1 is liste2 si les deux variables référencent le même objet)
+
+Pour qu'une fonction puisse modifier le contenu d'une variable contenue hors de la fonction il suffit de déclarer la variable globale :
+
+i = 1
+def fonc():
+    global i
+    # Instructions modification de i
+
+## POO côté développeur
+
+### Première approche des classes
+
+Créer une classe avec un constructeur vide :
+
+class NomClasse:
+    def __init__(self):
+        self.attr1 = val1
+
+Le constructeur peut contenir des valeurs d'attributs (mais commence toujours par self)
+
+def __init__(self, maVal):
+    self.attr1 = maVal
+
+Attributs de classe (equivalent static java) :
+
+class NomClasse:
+    obj_crees = 0
+
+    def __init__(self):
+        NomClasse.obj_crees +=1
+
+Définir une méthode d'instance :
+
+def methode(self, param):
+    self.attr1 = param
+
+Définir une méthode statique : on ne passe pas self en premier paramètre mais cls
+
+def methodeStatique(cls):
+
+Autre possibilité de methode appelée statiquement :
+
+def uneMethode():
+    # Instructions independante de l'instance
+
+methodeStatique = staticmethod(uneMethode)
+
+Introspection :
+
+dir(uneInstance) : Affiche les attributs et méthodes de l'objet passé en paramètre
+attribut spécial __dict__ : obj.__dict__ affiche les attributs/valeurs de l'objet
+
+### Les propriétés
+
+Les attributs sont toujours public en python.
+
+Les propriétés sont un moyen transparent de manipuler les attributs :
+
+class MaClasse: 
+    def __init(self)__:
+        self._attr = "val"
+
+    def _get_attr(self):
+        # methode appelée lorsqu'on accède en lecture à l'attribut
+
+    def _set_attr(self, val):
+        # methode appelée lorsqu'on accède en écriture à l'attribut
+
+    # On indique à python que notre attribut attr pointe vers une propriété
+    attr = property(_get_attr,_set_attr)
+
+Lorsqu'on appelle maclasse.attr : python passe par les getter et setter définis dans la propriété.
+
+### Les méthodes spéciales
+
+Les méthodes spéciales sont des méthodes d'instances.
+
+#### Edition et accès aux attributs
+
+- Méthodes d'éditions :
+    - __init__ : constructeur
+    - __del__ : destructeur
+- Méthode de représentations :
+    - __str__ : équivalent de tostring
+    - __repr__ : comme __str__ si non implémentée. Méthode appelée implicitement avec la fonction repr(obj)
+- Méthodes d'accès aux attributs :
+    - __getattr__ : appelée lorsqu'on essaie d'accéder à un attribut qui n'est pas défini
+    - __setattr__ : appelée lorsqu'on donne une valeur à un attribut
+    - __delattr__ : appelée lorsqu'on fait un del sur un attribut
+
+#### Méthodes de conteneur
+
+- Méthodes d'accès aux éléments
+    - __getitem__ : définit ce que l'on renvoie lorsqu'on fait objet[index]
+    - __setitem__ : définit ce que l'on renvoie lorsqu'on fait objet[index] = valeur
+    - __delitem__ : définit ce que l'on renvoie lorsqu'on fait del objet[index]
+- Méthode derrière "in" :
+    - __contains__ : appelée lorsqu'on fait "elt in monObjet"
+- Taille d'un conteneur :
+    - __len__ : appelée lorsqu'on fait len(objet)
+
+#### Méthodes mathématiques
+
+Elles permettent de définir les opérations à effectuer sur un objet lorsqu'on utilise les opérateurs mathématiques + - *...
+
+- __add__ : appelée lorsqu'on fait objet + objet
+- __sub__ : appelée lorsqu'on fait objet - objet
+- __mul__ : appelée lorsqu'on fait objet * objet
+- __truediv__ : appelée lorsqu'on fait objet / objet
+- __floordiv__ : appelée lorsqu'on fait objet // objet
+- __mod__ : appelée lorsqu'on fait objet % objet
+- __pow__ : appelée lorsqu'on fait objet ** objet
+...
+
+Attention au sens lorsqu'on effectue une opération sur 2 objets différents : c'est la méthode add du premier objet qui est utilisée. On peut faire marcher l'opération dans le sens inverse en préfixant la méthode par r :
+
+- __radd__
+- __rsub__
+....
+
+Les opérateurs += et -= peuvent être surchargés en préfixant par i :
+
+- __iadd__
+- __isub__
+
+#### Méthodes de comparaison
+
+Elles permettent de définir les opérations à effectuer sur un objet lorsqu'on utilise les opérateurs == <= >= ...
+
+- __eq__ = appelée lorsqu'on fait objet == objet
+- __ne__ = appelée lorsqu'on fait objet != objet
+- __gt__ = appelée lorsqu'on fait objet > objet
+- __ge__ = appelée lorsqu'on fait objet >= objet
+- __lt__ = appelée lorsqu'on fait objet < objet
+- __le__ = appelée lorsqu'on fait objet <= objet
+
+Ce sont également ces méthodes qui sont appelées lorsqu'on trie une liste d'objets.
+
+#### Méthodes utiles à pickle
+
+Permettent de contrôler l'état d'un objet lors de la sérialisation / désérialisation :
+
+- __getstate__
+- __setstate__
+
+### Parenthèse sur le tri
+
+2 méthodes pour trier une liste :
+
+- maListe.sort() : Ordonne les éléments de maListe
+- sorted(maListe) : Fonction builtin qui renvoie une liste triée. MaListe n'est pas modifiée
+
+On peut préciser la clé de tri en passant le paramètre optionnel key aux méthodes sort et sorted. Elle se définit comme une fonction :
+
+ex :
+sorted(tab, key=lambda colonnes: colonnes[2]) : permet de trier sur la 3eme colonne du tableau
+
+Pour trier un objet il faut soit :
+
+- définir la fontion __lt__ dans la classe de l'objet à trier
+- passer par l'argument key pour dire à python comment trier nos objets
+
+Pour trier dans l'ordre inverse on utilise le paramètre reverse=True dans les fonctions sort ou sorted
+
+Pour des raisons de performance il est préférable d'utiliser le module operator plutôt que les fonctions lambda lors des tris :
+
+ex :
+from operator import itemgetter
+sorted(tab, key=itemgetter(2))
+
+Pour trier sur les attributs d'un objet on utilise attrgetter
+
+Pour trier selon plusieurs critères on peut passer plusieurs arguments à attrgetter
+
+Le tri en Python est « stable », c'est-à-dire que l'ordre de deux éléments dans la liste n'est pas modifié s'ils sont égaux. Cette propriété permet le chaînage de tri.
+
+### L'héritage
+
+#### Héritage simple
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+la classe B hérite de A
+
+Dans le constructeur B si on veut appeler le constructeur A il faut le faire explicitement :
+A.__init__(self)
+
+Deux méthodes permettent de connaitre les instances :
+- issubclass : Teste si une classe est une sous-classe d'une autre
+- isinstance : permet de savoir si un objet est issu d'une classe ou de ses classes filles
+
+#### Héritage multiple
+
+class A:
+    pass
+
+class B:
+    pass
+
+class C(A,B):
+    pass
+
+La recherche de méthode a appeler suit l'ordre de définition : C > A > B
+
+Créer une Exception personnalisée :
+
+Doit hériter de :
+- BaseException
+- ou Exception (hérite elle même de BaseException)
+
+Doit redéfinir le constructeur et __str__
