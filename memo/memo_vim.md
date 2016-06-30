@@ -1,3 +1,7 @@
+# VIM
+
+## Configuration de base *.vimrc*
+
 ```
 " Code
 syntax on " Coloration syntaxique activée
@@ -14,3 +18,7 @@ set autoindent " Reproduit l'indentation de la ligne courante sur la suivante
 set encoding=utf-8 " Encoding pour l'affichage
 set fileencodings=utf-8 " Encoding a l'écriture du fichier
 ```
+
+## Commandes utiles
+
+- Supprimer la coloration syntaxique après une recherche : `:noh`
