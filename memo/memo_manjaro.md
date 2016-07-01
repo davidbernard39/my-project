@@ -27,9 +27,15 @@
 ## Post installation
 
 - Log in
-- Rêglage des paramètres d'affichage (écran hidpi : ajuster la mise à l'échelle coeff 2 ; augmenter la taille des polices ; règler les dpi des polices à 150)
+- Réglage des paramètres d'affichage (écran hidpi : ajuster la mise à l'échelle coeff 2 ; augmenter la taille des polices ; règler les dpi des polices à 150...)
 - Mise à jour pacman :
   - Mettre à jour la liste des miroirs triés par ping : `pacman-mirrors -g`
   - Synchroniser la base pacman : `pacman -Syy`
   - Mettre à jour le système : `pacman -Syu`
-
+- Installer vi : 
+  - `pacman -S vim`
+  - Créer un lien vi vers vim : `ln -s vim /usr/bin/vi`
+- Edition du fichier `~/.bashrc`
+  - Ajouter les alias :
+    - `alias ls = ls --color`
+    - `alias ll = ls -l`
