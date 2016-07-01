@@ -39,3 +39,18 @@
   - Ajouter les alias :
     - `alias ls = ls --color`
     - `alias ll = ls -l`
+
+## Packages 
+
+### Pacman
+
+- eclipse-java
+- git
+- gimp
+- inkscape
+- blender
+
+### AUR
+
+- brackets (nodejs+npm)
+- arduino
