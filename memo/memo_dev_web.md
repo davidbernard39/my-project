@@ -52,3 +52,11 @@ Installation du générateur karma : `npm install -g generator-karma`
 https://github.com/yeoman/generator-angular
 
 Création du répertoire : `mkdir my-new-project && cd $_`
+
+Initialisation du repository git : `git init`
+
+Génération du squelette : `yo angular`
+
+Installation des dépendances karma : `npm install grunt-karma karma karma-phantomjs-launcher karma-jasmine jasmine-core phantomjs-prebuilt --save-dev`
+
+Construction : `grunt` et serveur : `grunt serve`
