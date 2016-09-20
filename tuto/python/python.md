@@ -757,3 +757,19 @@ Doit hériter de :
 - ou `Exception` (hérite elle même de BaseException)
 
 Doit redéfinir le constructeur et `__str__`
+
+### Derrière la boucle for
+
+#### Les itérateurs
+
+Les utilisateurs interviennent lors des parcours de liste :
+
+```
+ma_liste = [1, 2, 3]
+for i in ma_liste
+```
+
+Python utilise l'itérateur de `ma_liste`. L'itérateur est créé dans la méthode spéciale `__iter__` (la méthode renvoie un itérateur permettant de parcourir la liste).
+
+A chaque tour de boucle python appelle la méthode `__next__` de l'itérateur qui doit renvoyer l'élément suivant du parcours ou lever l'exception `StopIteration` si le parcours est fini.
+
