@@ -762,7 +762,7 @@ Doit redéfinir le constructeur et `__str__`
 
 #### Les itérateurs
 
-Les utilisateurs interviennent lors des parcours de liste :
+Les itérateurs interviennent lors des parcours de liste :
 
 ```
 ma_liste = [1, 2, 3]
@@ -772,4 +772,41 @@ for i in ma_liste
 Python utilise l'itérateur de `ma_liste`. L'itérateur est créé dans la méthode spéciale `__iter__` (la méthode renvoie un itérateur permettant de parcourir la liste).
 
 A chaque tour de boucle python appelle la méthode `__next__` de l'itérateur qui doit renvoyer l'élément suivant du parcours ou lever l'exception `StopIteration` si le parcours est fini.
+
+Création d'un itérateur :
+
+```
+class RevStr(str):
+     def __iter__(self):
+             return ItRevStr(self)
+
+class ItRevStr:
+     def __init__(self, chaine_a_parcourir):
+             self.chaine_a_parcourir = chaine_a_parcourir
+             self.position = len(chaine_a_parcourir)
+     def __next__(self):
+             if self.position == 0:
+                     raise StopIteration
+             self.position -= 1
+             return self.chaine_a_parcourir[self.position]
+```
+
+Utilisation : 
+
+```
+>>> test = RevStr("Bonjour")
+>>> test
+'Bonjour'
+>>> for lettre in test:
+...     print(lettre)
+...
+r
+u
+o
+j
+n
+o
+B
+```
+
 
