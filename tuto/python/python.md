@@ -809,4 +809,43 @@ o
 B
 ```
 
+#### Les générateurs
+
+Générateurs simples : utilisation de `yield` :
+
+```
+def gen():
+	yield 1
+	yield 2
+	yield 3
+
+>>> it = iter(gen())
+>>> next(it)
+1
+>>> next(it)
+2
+```
+
+Possiblité de l'utiliser dans la boucle for :
+
+```
+for i in gen():
+	print(i)
+```
+
+On peut altérer le parcours à l'aide de co-routines :
+
+*interrompre la boucle :*
+
+```
+generateur = gen()
+generateur.close()
+```
+
+*Envoyer des données au générateur :*
+
+Dans le générateur il faut étendre celui ci pour accepter des valeurs : `valeur_recue = (yield valeur_generee)`.
+Si une valeur est reçue `valeur_recue is not None`.
+
+Dans la boucle pour envoyer une valeur au générateur : `generateur.send(valeur_envoyee)`.
 
