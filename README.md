@@ -2,5 +2,6 @@
 
 Projet fourre-tout :
 
-- memo : pense bête des commandes utiles pour bash, git...
-- tuto : notes et liens vers des tutos intéressants
+- memo : pense bÃªte des commandes utiles pour bash, git...
+- tuto : notes et liens vers des tutos intÃ©ressants
+- lfs : notes sur l'installation d'une distri lfs
