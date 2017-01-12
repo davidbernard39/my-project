@@ -112,6 +112,7 @@ export LFS LC_ALL LFS_TGT PATH
 ```
 
 - Installation de binutils
+- Installation de gcc
 
 ## Notes suite à la lecture de LFS
 
