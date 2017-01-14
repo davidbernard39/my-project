@@ -1,4 +1,4 @@
-# Notes sur l'installation de LFS sur raspberrypi 1 b+
+# Notes sur l'installation de LFS sur Raspberry pi 1 b+ / Raspberry pi 2
 
 ## Sources
 
@@ -6,6 +6,9 @@
 [http://www.linuxfromscratch.org/lfs/](http://www.linuxfromscratch.org/lfs/)
 
 (LFS version 7.10 utilisée à la rédaction du document)
+
+11/01/2017 : Tentative d'installation sur raspberry pi 1 b+ mais problème de compilation de gcc (certainement dû à un manque de RAM)
+14/01/2017 : Passage de la sd sur un raspberry pi2 (autre solution non retenue : ajouter du swap sur le pi1)
 
 ## Manips
 
