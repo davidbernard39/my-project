@@ -7,8 +7,8 @@
 
 (LFS version 7.10 utilisée à la rédaction du document)
 
-11/01/2017 : Tentative d'installation sur raspberry pi 1 b+ mais problème de compilation de gcc (certainement dû à un manque de RAM)
-14/01/2017 : Passage de la sd sur un raspberry pi2 (autre solution non retenue : ajouter du swap sur le pi1)
+- 11/01/2017 : Tentative d'installation sur raspberry pi 1 b+ mais problème de compilation de gcc (certainement dû à un manque de RAM)
+- 14/01/2017 : Passage de la sd sur un raspberry pi2 suppression des tools (binutils déjà compilé sur le pi1 avec architecture armv6) (autre solution non retenue : ajouter du swap sur le pi1)
 
 ## Manips
 
