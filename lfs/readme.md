@@ -115,7 +115,47 @@ export LFS LC_ALL LFS_TGT PATH
 ```
 
 - Installation de binutils
-- Installation de gcc
+- Installation de gcc 
+
+patch pour tirer partie du fpu du raspberry pi: https://wiki.debian.org/ArmHardFloatPort/VfpComparison#FPU
+```
+--- gcc-5.3.0-orig/gcc/config.gcc	2016-03-15 12:42:09.000000000 -0700
++++ gcc-5.3.0/gcc/config.gcc	2016-03-15 12:46:31.000000000 -0700
+@@ -1056,6 +1056,13 @@
+ 	    tmake_file="$tmake_file arm/t-linux-androideabi"
+ 	    ;;
+ 	esac
++	case ${target} in
++	arm*-*-*eabihf)
++	    with_cpu=${with_cpu:-cortex-a7}
++	    with_fpu=${with_fpu:-neon-vfpv4}
++	    with_float=${with_float:-hard}
++	    ;;
++	esac
+ 	# The EABI requires the use of __cxa_atexit.
+ 	default_use_cxa_atexit=yes
+ 	with_tls=${with_tls:-gnu}
+```
+
+patch pour le linker :
+```
+for file in \
+ $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h -o -name linux-eabi.h -o -name linux-elf.h)
+do
+  cp -uv $file{,.orig}
+  sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
+      -e 's@/usr@/tools@g' $file.orig > $file
+  echo '
+#undef STANDARD_STARTFILE_PREFIX_1
+#undef STANDARD_STARTFILE_PREFIX_2
+#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"
+#define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
+  touch $file.orig
+done
+```
+
+
+
 
 ## Notes suite à la lecture de LFS
 
