@@ -154,6 +154,10 @@ do
 done
 ```
 
+- Installation des headers linux (version de la raspberry foundation : wget https://github.com/raspberrypi/linux/archive/rpi-4.4.y.tar.gz)
+
+- Installation de glibc
+
 
 
 
