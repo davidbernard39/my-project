@@ -158,7 +158,11 @@ done
 
 - Installation de glibc
 
+lien pour les ld-linux-armhf : `ln -sv ld-2.24.so $LFS/tools/lib/ld-linux.so.3`
 
+- Installation de libstdc++
+- Installation de binutils Pass #2
+- Installation de gcc Pass #2
 
 
 ## Notes suite à la lecture de LFS
