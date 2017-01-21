@@ -163,6 +163,10 @@ lien pour les ld-linux-armhf : `ln -sv ld-2.24.so $LFS/tools/lib/ld-linux.so.3`
 - Installation de libstdc++
 - Installation de binutils Pass #2
 - Installation de gcc Pass #2
+- Installation de tcl-core
+- Installation de expect
+- Installation de dejaGnu
+- Installation de check
 
 
 ## Notes suite à la lecture de LFS
