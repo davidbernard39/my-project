@@ -167,6 +167,36 @@ lien pour les ld-linux-armhf : `ln -sv ld-2.24.so $LFS/tools/lib/ld-linux.so.3`
 - Installation de expect
 - Installation de dejaGnu
 - Installation de check
+- Installation de ncurses
+- Installation de bash
+- Installation de bzip2
+- Installation de coreutils
+- Installation de diffutils
+- Installation de file
+- Installation de findutils
+- Installation de gawk
+- Installation de gettext
+- Installation de grep
+- Installation de gzip
+- Installation de m4
+- Installation de make
+- Installation de patch
+- Installation de perl
+- Installation de sed
+- Installation de tar
+- Installation de texinfo
+- Installation de util-linux
+- Installtion de xz
+
+Striping et suppression de de la doc :
+
+```
+strip --strip-debug /tools/lib/*
+/usr/bin/strip --strip-unneeded /tools/{,s}bin/*
+rm -rf /tools/{,share}/{info,man,doc}
+```
+
+Changement de /tools pour root : `chown -R root:root $LFS/tools`
 
 
 ## Notes suite à la lecture de LFS
