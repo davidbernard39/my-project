@@ -235,8 +235,8 @@ Ajustement de la toolchain : utilisation de `$(gcc -dumpmachine)` au lieu de `$(
 - Installation de binutils
 - Installation de gmp 
 - Installation de mpfr
-
-
+- Installation de mpc
+- Installation de gcc
 
 ## Notes suite à la lecture de LFS
 
