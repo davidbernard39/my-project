@@ -198,6 +198,45 @@ rm -rf /tools/{,share}/{info,man,doc}
 
 Changement de /tools pour root : `chown -R root:root $LFS/tools`
 
+Backup de /tools.
+
+Création des répertoires et device nodes.
+
+Montage des systemes de fichier virtuels du kernel.
+
+Montage de la clé usb pour accès depuis l'environnement chroot : `mount -v --bind /cle/sources $LFS/sources/download`
+
+Entrer dans l'environnement chroot : 
+```
+chroot "$LFS" /tools/bin/env -i \
+    HOME=/root                  \
+    TERM="$TERM"                \
+    PS1='\u:\w\$ '              \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
+    /tools/bin/bash --login +h
+```
+
+Création des répertoires FHS pour le système final.
+
+Création de liens symbolique pour compatibilité de certains programmes.
+
+Création des fichiers passwd, group
+
+- Installation des headers Linux pour glibc
+- Installation de man pages
+- Installation de glibc
+
+Lien symbolique pour arm : `ln -sv ld-2.24.so /lib/ld-linux.so.3`
+
+Ajustement de la toolchain : utilisation de `$(gcc -dumpmachine)` au lieu de `$(uname -m)`
+
+- Installation de zlib
+- Installation de file
+- Installation de binutils
+- Installation de gmp 
+- Installation de mpfr
+
+
 
 ## Notes suite à la lecture de LFS
 
