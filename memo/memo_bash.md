@@ -51,6 +51,15 @@ ssh-keygen -t dsa -b 1024
 ssh-copy-id -i ~/.ssh/id_dsa.pub user@host \#fichier.pub généré par la cmd précédente 
 ```
 
+Pour passer par un alias Editer / Créer le fichier ~/.ssh/config :
+``` 
+Host alias-remote
+    User user-remote
+    HostName host-remote
+``` 
+Pour se loguer : `ssh alias-remote`
+
+
 ** Generer une clé privée pour ssh ** 
 `ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key`
 
