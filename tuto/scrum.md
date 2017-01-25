@@ -34,3 +34,9 @@ Scrum prescribes four formal events for inspection and adaptation, as described 
 - Sprint Retrospective
 
 ## Scrum values
+
+- commitment
+- courage
+- focus
+- openness
+- respect
