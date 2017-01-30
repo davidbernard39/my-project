@@ -534,3 +534,44 @@ ex: `git config --global alias.unstage 'reset HEAD --'` makes the two following 
 - `git reset HEAD -- fileA`
 
 Useful log alias to see the last commit : `git config --global alias.last 'log -1 HEAD`
+
+## Git branches
+
+### Branches in a Nutshell
+
+ex: initialization of a git repository with 3 files
+
+```
+$ git add README test.rb LICENSE
+$ git commit -m 'The initial commit of my project'
+```
+
+Git repository contains 5 objects : 
+    - 3 blobs (file content)
+    - 1 tree (directory content, specifies which file names are stored as which blob)
+    - 1 commit object (a pointer to the tree with all commit metadata (user, message...)
+  
+When a new commit is done, it refers to the previous commit as its parent.
+
+> A branch in Git is simply a lightweight movable pointer to one of these commits.
+
+At first commit a branch 'master' is automatically created pointing on the commit and then moved forward at each commit.
+
+#### Creating a branch 
+
+`git branch <branch_name>` 
+
+This creates a new pointer to the current commit, but it doesn't switch to that branch.
+
+To know on which branch it is, git keeps a special pointer called `HEAD`.
+
+To see on which branch we are : `git log --oneline --decorate` 
+
+#### Switching branch
+
+`git checkout <branch_name>`
+
+This moves `HEAD` to the branch.
+
+When changes are made on two branches check the divergent history with `git log --oneline --decorate --graph --all`
+
