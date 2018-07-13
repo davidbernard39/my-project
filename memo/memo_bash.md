@@ -51,6 +51,10 @@ ssh-keygen -t dsa -b 1024
 ssh-copy-id -i ~/.ssh/id_dsa.pub user@host \#fichier.pub généré par la cmd précédente 
 ```
 
+Alternative à `ssh-copy-id` : 
+- Copier le fichier id_rsa.pub dans user@host:~ : `scp id_rsa.pub user@host:~`
+- Ajouter le contenu dans ~/.ssh/authorized_keys : `cat id_rsa.pub >> ~/.ssh/authorized_keys`
+
 Pour passer par un alias Editer / Créer le fichier ~/.ssh/config :
 ``` 
 Host alias-remote
