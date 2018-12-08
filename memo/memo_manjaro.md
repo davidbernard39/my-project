@@ -39,6 +39,7 @@
   - Ajouter les alias :
     - `alias ls = ls --color`
     - `alias ll = ls -l`
+- Installer powerline
 
 ## Packages 
 
